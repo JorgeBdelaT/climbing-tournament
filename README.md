@@ -129,3 +129,20 @@ You can also dockerize this stack and deploy a container.
 Here are some resources that we commonly refer to:
 
 - [Protecting routes with Next-Auth.js](https://next-auth.js.org/configuration/nextjs#unstable_getserversession)
+
+## Usefull commands
+
+```bash
+
+# Connect to db branch locally
+pscale connect <DATABASE_NAME> <BRANCH>
+
+# List database branches
+pscale branch list <DATABASE_NAME>
+
+# Push changes to branch
+npx prisma db push
+
+# Open prisma studio
+npx prisma studio
+```
