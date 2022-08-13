@@ -1,25 +1,18 @@
 // src/pages/_app.tsx
 import { withTRPC } from "@trpc/next";
-import type { AppRouter } from "../server/router";
+import type { AppRouter } from "@/server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
 import { MantineProvider } from "@mantine/core";
-import "../styles/globals.css";
+import theme from "@/styles/theme";
 
 const MyApp: AppType = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <MantineProvider
-      withGlobalStyles
-      withNormalizeCSS
-      theme={{
-        /** Put your mantine theme override here */
-        colorScheme: "light",
-      }}
-    >
+    <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>

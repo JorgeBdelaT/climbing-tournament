@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { trpc } from "../utils/trpc";
+import { trpc } from "@/utils/trpc";
 
 type TechnologyCardProps = {
   name: string;
