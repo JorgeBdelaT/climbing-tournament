@@ -13,6 +13,8 @@ const Home: NextPage = () => {
   const { data } = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
   const { data: session } = useSession();
 
+  console.log({ session });
+
   return (
     <>
       <Head>
