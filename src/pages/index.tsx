@@ -10,10 +10,12 @@ type TechnologyCardProps = {
 };
 
 const Home: NextPage = () => {
-  const { data } = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
   const { data: session } = useSession();
+  const { data } = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  const examples = trpc.useQuery(["example.getAll"]);
 
   console.log({ session });
+  console.log({ examples });
 
   return (
     <>
