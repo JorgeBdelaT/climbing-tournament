@@ -30,6 +30,7 @@ const useStyles = createStyles((theme) => ({
     position: "relative",
     zIndex: 1,
     height: HEADER_HEIGHT,
+    boxShadow: "0 5px 10px rgba(0, 0, 0, 0.1)",
   },
 
   logo: {
