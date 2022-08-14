@@ -1,5 +1,5 @@
 import { FC, memo, PropsWithChildren } from "react";
-import { AppShell, Container, Header } from "@mantine/core";
+import { AppShell, Container, Footer, Header } from "@mantine/core";
 import Navbar from "./Navbar";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
@@ -10,6 +10,18 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
           <Header height={60}>
             <Navbar />
           </Header>
+        }
+        footer={
+          <Footer height={60} p="md">
+            Made with ❤️ by{" "}
+            <a
+              href="https://github.com/JorgeBdelaT"
+              target="_blank"
+              rel="noreferrer"
+            >
+              jorge
+            </a>
+          </Footer>
         }
         styles={(theme) => ({
           main: {
