@@ -1,6 +1,6 @@
-import type { MantineTheme } from "@mantine/core";
+import type { MantineThemeOverride } from "@mantine/core";
 
-const theme: Partial<MantineTheme> = {
+const theme: MantineThemeOverride = {
   /** Put your mantine theme override here */
   colorScheme: "light",
 };
