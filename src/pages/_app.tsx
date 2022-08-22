@@ -4,52 +4,24 @@ import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
-import {
-  ColorScheme,
-  ColorSchemeProvider,
-  MantineProvider,
-} from "@mantine/core";
-import { useState } from "react";
-import { useHotkeys } from "@mantine/hooks";
 import { GetServerSidePropsContext } from "next";
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie } from "cookies-next";
+
+import ThemeProvider from "../providers/ThemeProvider";
+import Layout from "../components/Layout/Layout";
 
 // @ts-ignore
 const MyApp: AppType = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>(
-    pageProps.colorScheme
-  );
-
-  const toggleColorScheme = (value?: ColorScheme) => {
-    const nextColorScheme =
-      value || (colorScheme === "dark" ? "light" : "dark");
-    setColorScheme(nextColorScheme);
-    setCookie("prefered-color-scheme", nextColorScheme, {
-      maxAge: 60 * 60 * 24 * 30,
-      sameSite: "none",
-      secure: true,
-    });
-  };
-
-  useHotkeys([["mod+J", () => toggleColorScheme()]]);
-
   return (
     <SessionProvider session={session}>
-      <ColorSchemeProvider
-        colorScheme={colorScheme}
-        toggleColorScheme={toggleColorScheme}
-      >
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{ colorScheme }}
-        >
+      <ThemeProvider defaultColorScheme={pageProps.colorScheme}>
+        <Layout>
           <Component {...pageProps} />
-        </MantineProvider>
-      </ColorSchemeProvider>
+        </Layout>
+      </ThemeProvider>
     </SessionProvider>
   );
 };
