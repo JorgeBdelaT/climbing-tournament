@@ -3,6 +3,7 @@ import {
   MantineThemeOverride,
   Tuple,
   DefaultMantineColor,
+  MantineTheme,
 } from "@mantine/core";
 
 import themeModeValue from "../utils/themeModeValue";
@@ -12,6 +13,9 @@ type ExtendedCustomColors = "deepBlue" | DefaultMantineColor;
 declare module "@mantine/core" {
   export interface MantineThemeColorsOverride {
     colors: Record<ExtendedCustomColors, Tuple<string, 10>>;
+  }
+  export interface MantineThemeOther {
+    modeValue: (theme: MantineTheme, lightValue: any, darkValue: any) => any;
   }
 }
 
@@ -49,7 +53,9 @@ const baseTheme: MantineThemeOverride = {
       }),
     },
   },
-  other: {},
+  other: {
+    modeValue: themeModeValue,
+  },
 };
 
 const getTheme = (colorScheme: ColorScheme): MantineThemeOverride => ({
