@@ -23,6 +23,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             theme.colors.gray[0],
             theme.colors.deepBlue[7]
           ),
+          paddingLeft: "10%",
+          paddingRight: "10%",
+          paddingTop: 90,
         },
       }}
       // navbarOffsetBreakpoint="sm"
