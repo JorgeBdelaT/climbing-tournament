@@ -53,7 +53,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
               backgroundColor:
                 theme.colorScheme === "dark"
                   ? theme.colors.deepBlue[7]
-                  : theme.white,
+                  : theme.colors.gray[0],
               color:
                 theme.colorScheme === "dark"
                   ? theme.colors.gray[0]
