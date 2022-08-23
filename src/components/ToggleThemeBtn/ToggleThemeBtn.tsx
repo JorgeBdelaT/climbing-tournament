@@ -7,6 +7,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { IconMoon, IconSun } from "@tabler/icons";
+import useThemeModeValue from "../../hooks/useThemeModeValue";
 
 const TooltipLabel = (
   <Container p={4}>
@@ -17,8 +18,8 @@ const TooltipLabel = (
 );
 
 const ToggleThemeBtn = () => {
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === "dark";
+  const { toggleColorScheme } = useMantineColorScheme();
+  const { themeModeValue } = useThemeModeValue();
 
   return (
     <Tooltip label={TooltipLabel}>
@@ -28,7 +29,7 @@ const ToggleThemeBtn = () => {
         variant="light"
         onClick={() => toggleColorScheme()}
       >
-        {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+        {themeModeValue(<IconMoon size={18} />, <IconSun size={18} />)}
       </ActionIcon>
     </Tooltip>
   );

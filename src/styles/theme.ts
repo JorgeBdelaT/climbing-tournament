@@ -1,6 +1,11 @@
-import { ColorScheme, MantineThemeOverride } from "@mantine/core";
+import {
+  ColorScheme,
+  MantineThemeOverride,
+  Tuple,
+  DefaultMantineColor,
+} from "@mantine/core";
 
-import { Tuple, DefaultMantineColor } from "@mantine/core";
+import themeModeValue from "../utils/themeModeValue";
 
 type ExtendedCustomColors = "deepBlue" | DefaultMantineColor;
 
@@ -35,10 +40,11 @@ const baseTheme: MantineThemeOverride = {
     Card: {
       styles: (theme) => ({
         root: {
-          backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.deepBlue[4]
-              : theme.white,
+          backgroundColor: themeModeValue(
+            theme,
+            theme.white,
+            theme.colors.deepBlue[4]
+          ),
         },
       }),
     },

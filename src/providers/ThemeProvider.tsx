@@ -8,6 +8,7 @@ import { useHotkeys } from "@mantine/hooks";
 import { setCookie } from "cookies-next";
 import { FC, ReactNode, useState } from "react";
 import getTheme from "../styles/theme";
+import themeModeValue from "../utils/themeModeValue";
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -50,14 +51,12 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
               boxSizing: "border-box",
             },
             body: {
-              backgroundColor:
-                theme.colorScheme === "dark"
-                  ? theme.colors.deepBlue[7]
-                  : theme.colors.gray[0],
-              color:
-                theme.colorScheme === "dark"
-                  ? theme.colors.gray[0]
-                  : theme.black,
+              backgroundColor: themeModeValue(
+                theme,
+                theme.colors.gray[0],
+                theme.colors.deepBlue[7]
+              ),
+              color: themeModeValue(theme, theme.black, theme.colors.gray[0]),
             },
           })}
         />

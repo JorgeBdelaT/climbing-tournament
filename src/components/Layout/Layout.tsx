@@ -2,10 +2,9 @@ import {
   AppShell,
   Footer as FooterContainer,
   Header as HeaderContainer,
-  MantineTheme,
-  useMantineTheme,
 } from "@mantine/core";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode } from "react";
+import useThemeModeValue from "../../hooks/useThemeModeValue";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -13,25 +12,17 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const getFooterColors = (theme: MantineTheme) =>
-  theme.colorScheme === "dark" ? theme.colors.deepBlue[4] : theme.white;
-
-const getHeaderColors = (theme: MantineTheme) =>
-  theme.colorScheme === "dark" ? theme.colors.deepBlue[4] : theme.white;
-
-const getMainColors = (theme: MantineTheme) =>
-  theme.colorScheme === "dark"
-    ? theme.colors.deepBlue[7]
-    : theme.colors.gray[0];
-
 const Layout: FC<LayoutProps> = ({ children }) => {
-  const theme = useMantineTheme();
+  const { theme, themeModeValue } = useThemeModeValue();
 
   return (
     <AppShell
       styles={{
         main: {
-          background: getMainColors(theme),
+          background: themeModeValue(
+            theme.colors.gray[0],
+            theme.colors.deepBlue[7]
+          ),
         },
       }}
       // navbarOffsetBreakpoint="sm"
@@ -50,7 +41,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           height={40}
           styles={{
             root: {
-              background: getFooterColors(theme),
+              background: themeModeValue(theme.white, theme.colors.deepBlue[4]),
             },
           }}
         >
@@ -61,7 +52,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <HeaderContainer
           height={50}
           style={{
-            backgroundColor: getHeaderColors(theme),
+            backgroundColor: themeModeValue(
+              theme.white,
+              theme.colors.deepBlue[4]
+            ),
             boxShadow: "0px 0px 5px rgba(0, 0, 0, .25)",
           }}
         >
