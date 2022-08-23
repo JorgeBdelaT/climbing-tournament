@@ -2,7 +2,7 @@ import { Anchor, Center, Text } from "@mantine/core";
 
 const Footer = () => {
   return (
-    <Center inline sx={{ height: "100%" }} p="md">
+    <Center inline sx={{ height: "100%" }} px="xl">
       <Text size="xs">
         Made with ❤️ by{" "}
         <Anchor
