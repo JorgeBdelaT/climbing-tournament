@@ -28,17 +28,6 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           paddingTop: 90,
         },
       }}
-      // navbarOffsetBreakpoint="sm"
-      // navbar={
-      //   <Navbar
-      //     p="md"
-      //     hiddenBreakpoint="xl"
-      //     hidden={!opened}
-      //     width={{ sm: 200, lg: 300 }}
-      //   >
-      //     <Text>Application navbar</Text>
-      //   </Navbar>
-      // }
       footer={
         <FooterContainer
           height={40}

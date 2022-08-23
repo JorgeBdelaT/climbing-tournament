@@ -1,45 +1,126 @@
 import {
-  Burger,
   Button,
   Container,
+  createStyles,
   Group,
-  MediaQuery,
-  Text,
-  useMantineTheme,
+  Menu,
+  ThemeIcon,
+  Title,
 } from "@mantine/core";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  IconLogout,
+  IconBrandGoogle,
+  IconBrandFacebook,
+  IconChevronDown,
+} from "@tabler/icons";
+
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
+import MobileMenu from "./MobileMenu";
+
+const useStyles = createStyles((theme) => ({
+  header: {
+    height: "100%",
+    padding: theme.spacing.xl,
+    display: "flex",
+    alignItems: "center",
+  },
+  container: {
+    width: "100%",
+  },
+  logoContainer: {
+    cursor: "pointer",
+    padding: 0,
+    margin: 0,
+  },
+  actionsContainer: {
+    padding: theme.spacing.xs,
+    [theme.fn.smallerThan("sm")]: { display: "none" },
+  },
+  button: {
+    height: 30,
+  },
+  dropdown: {
+    background: theme.other.modeValue(
+      theme,
+      theme.white,
+      theme.colors.deepBlue[4]
+    ),
+  },
+}));
 
 const Header = () => {
-  const theme = useMantineTheme();
-  const [showMenu, setShowMenu] = useState(false);
   const { data: session } = useSession();
+  const { classes } = useStyles();
 
   return (
-    <Container sx={{ height: "100%" }} p="xs">
-      <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
-        <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-          <Burger
-            opened={showMenu}
-            onClick={() => setShowMenu((o) => !o)}
-            size="sm"
-            color={theme.colors.gray[6]}
-            mr="xl"
-          />
-        </MediaQuery>
-        <Text>Climbing Tournament</Text>
-
-        <Group spacing={24} p="xs">
+    <Container className={classes.header} fluid>
+      <Group className={classes.container} position="apart">
+        <Link href="/">
+          <Group className={classes.logoContainer} spacing={8}>
+            <Image
+              src="/favicon-32x32.png"
+              alt="App logo"
+              width="24"
+              height="24"
+            />
+            <Title order={3}>Climbing Tournament</Title>
+          </Group>
+        </Link>
+        <Group className={classes.actionsContainer} spacing={24}>
           <ToggleThemeBtn />
-          {!session ? (
-            <Button onClick={() => signIn()}>Sign in</Button>
+          {session ? (
+            <Button
+              leftIcon={<IconLogout size={18} />}
+              onClick={() => signOut()}
+              className={classes.button}
+            >
+              Sign out
+            </Button>
           ) : (
-            <Button onClick={() => signOut()}>Sign out</Button>
+            <Menu
+              transition="pop-top-right"
+              position="top-end"
+              classNames={{ dropdown: classes.dropdown }}
+            >
+              <Menu.Target>
+                <Button
+                  rightIcon={<IconChevronDown size={18} stroke={1.5} />}
+                  className={classes.button}
+                >
+                  Sign in
+                </Button>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Item
+                  onClick={() => signIn("google")}
+                  icon={
+                    <ThemeIcon variant="light" radius="xl" color="violet">
+                      <IconBrandGoogle size={18} />
+                    </ThemeIcon>
+                  }
+                >
+                  with Google
+                </Menu.Item>
+                <Menu.Item
+                  onClick={() => signIn("facebook")}
+                  icon={
+                    <ThemeIcon variant="light" radius="xl" color="violet">
+                      <IconBrandFacebook stroke={1.5} size={18} />
+                    </ThemeIcon>
+                  }
+                >
+                  with Facebook
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
           )}
-          <Button loading>loading</Button>
         </Group>
-      </div>
+      </Group>
+      <MobileMenu />
     </Container>
   );
 };
