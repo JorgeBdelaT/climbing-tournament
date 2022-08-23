@@ -1,10 +1,23 @@
-import { Center, Text } from "@mantine/core";
+import { Anchor, Center, Text } from "@mantine/core";
 
 const Footer = () => {
-  /* TODO: add link to github */
   return (
-    <Center inline sx={{ height: "100%" }} p="xs">
-      <Text size="xs">Made with ❤️ by Jorge</Text>
+    <Center inline sx={{ height: "100%" }} p="md">
+      <Text size="xs">
+        Made with ❤️ by{" "}
+        <Anchor
+          href="https://github.com/JorgeBdelaT"
+          target="_blank"
+          sx={{
+            color: "inherit",
+            "&:hover": {
+              textDecoration: "none",
+            },
+          }}
+        >
+          Jorge
+        </Anchor>
+      </Text>
     </Center>
   );
 };
