@@ -4,18 +4,34 @@ import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
-import "../styles/globals.css";
+import { GetServerSidePropsContext } from "next";
+import { getCookie } from "cookies-next";
 
+import ThemeProvider from "../providers/ThemeProvider";
+import Layout from "../components/Layout/Layout";
+
+// @ts-ignore
 const MyApp: AppType = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <ThemeProvider defaultColorScheme={pageProps.colorScheme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </SessionProvider>
   );
 };
+
+// @ts-ignore
+MyApp.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
+  pageProps: {
+    colorScheme: getCookie("prefered-color-scheme", ctx) || "light",
+  },
+});
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") {
