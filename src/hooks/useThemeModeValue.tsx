@@ -1,6 +1,7 @@
-import { useMantineTheme } from "@mantine/core";
 import { useCallback } from "react";
-import _themeModeValue from "../utils/themeModeValue";
+import { useMantineTheme } from "@mantine/core";
+
+import _themeModeValue from "@/utils/themeModeValue";
 
 const useThemeModeValue = () => {
   const theme = useMantineTheme();

@@ -4,7 +4,8 @@ import {
   Header as HeaderContainer,
 } from "@mantine/core";
 import { FC, ReactNode } from "react";
-import useThemeModeValue from "../../hooks/useThemeModeValue";
+
+import useThemeModeValue from "@/hooks/useThemeModeValue";
 import Footer from "./Footer";
 import Header from "./Header";
 

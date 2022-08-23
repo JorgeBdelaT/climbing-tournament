@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
-import { trpc } from "../utils/trpc";
 import {
   Badge,
   Button,
@@ -11,6 +10,8 @@ import {
   SimpleGrid,
   Text,
 } from "@mantine/core";
+
+import { trpc } from "@/utils/trpc";
 
 const ExampleCard = () => (
   <Card shadow="sm" p="lg" radius="md">

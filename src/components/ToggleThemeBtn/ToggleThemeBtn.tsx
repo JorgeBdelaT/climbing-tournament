@@ -7,7 +7,8 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { IconMoon, IconSun } from "@tabler/icons";
-import useThemeModeValue from "../../hooks/useThemeModeValue";
+
+import useThemeModeValue from "@/hooks/useThemeModeValue";
 
 const TooltipLabel = (
   <Container p={4}>

@@ -1,14 +1,14 @@
 // src/pages/_app.tsx
 import { withTRPC } from "@trpc/next";
-import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
 import { getCookie } from "cookies-next";
 
-import ThemeProvider from "../providers/ThemeProvider";
-import Layout from "../components/Layout/Layout";
+import type { AppRouter } from "@/server/router";
+import ThemeProvider from "@/providers/ThemeProvider";
+import Layout from "@/components/Layout/Layout";
 
 // @ts-ignore
 const MyApp: AppType = ({

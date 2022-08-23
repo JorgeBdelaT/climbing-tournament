@@ -12,7 +12,6 @@ import {
 } from "@mantine/core";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState } from "react";
-import React from "react";
 import Link from "next/link";
 import {
   IconLogout,
@@ -23,8 +22,8 @@ import {
 } from "@tabler/icons";
 import { useRouter } from "next/router";
 
-import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
-import useThemeModeValue from "../../hooks/useThemeModeValue";
+import ToggleThemeBtn from "@/components/ToggleThemeBtn/ToggleThemeBtn";
+import useThemeModeValue from "@/hooks/useThemeModeValue";
 
 const links = [
   {

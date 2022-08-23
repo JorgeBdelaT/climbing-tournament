@@ -6,7 +6,7 @@ import {
   MantineTheme,
 } from "@mantine/core";
 
-import themeModeValue from "../utils/themeModeValue";
+import themeModeValue from "@/utils/themeModeValue";
 
 type ExtendedCustomColors = "deepBlue" | DefaultMantineColor;
 

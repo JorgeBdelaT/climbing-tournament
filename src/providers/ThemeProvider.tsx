@@ -7,8 +7,9 @@ import {
 import { useHotkeys } from "@mantine/hooks";
 import { setCookie } from "cookies-next";
 import { FC, ReactNode, useState } from "react";
-import getTheme from "../styles/theme";
-import themeModeValue from "../utils/themeModeValue";
+
+import getTheme from "@/styles/theme";
+import themeModeValue from "@/utils/themeModeValue";
 
 interface ThemeProviderProps {
   children: ReactNode;

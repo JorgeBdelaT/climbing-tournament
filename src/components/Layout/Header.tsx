@@ -18,7 +18,7 @@ import {
   IconChevronDown,
 } from "@tabler/icons";
 
-import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
+import ToggleThemeBtn from "@/components/ToggleThemeBtn/ToggleThemeBtn";
 import MobileMenu from "./MobileMenu";
 
 const useStyles = createStyles((theme) => ({
