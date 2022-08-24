@@ -15,7 +15,7 @@ const TooltipLabel = () => {
   return (
     <Container p={4}>
       <Text size="sm">
-        {t.press} <Kbd>cmd</Kbd> {t.or} <Kbd>ctrl</Kbd> + <Kbd>j</Kbd>{" "}
+        {t.press} <Kbd>cmd</Kbd> {t.or} <Kbd>ctrl</Kbd> + <Kbd>J</Kbd>{" "}
         {t.toToggleTheme}
       </Text>
     </Container>
