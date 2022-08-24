@@ -1,4 +1,4 @@
-import { useLocalStorage } from "@mantine/hooks";
+import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import { useRouter } from "next/router";
 
 type LocaleOption = "es" | "en";
@@ -16,6 +16,8 @@ const useToggleLanguage = () => {
     setCurrentLocale(newLocale);
     push(route, route, { locale: newLocale });
   };
+
+  useHotkeys([["mod+shift+K", () => toggleLanguage()]]);
 
   return { currentLocale, toggleLanguage };
 };
