@@ -80,6 +80,7 @@ const Header = () => {
             <Button
               leftIcon={<IconLogout size={18} />}
               onClick={() => signOut()}
+              variant="light"
               className={classes.button}
             >
               {t.signOut}
