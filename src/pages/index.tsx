@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 
 import { trpc } from "@/utils/trpc";
+import TournamentCTA from "@/components/tournaments/TournamentCTA";
 
 const ExampleCard = () => (
   <Card shadow="sm" p="lg" radius="md">
@@ -60,6 +61,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico?" />
       </Head>
       <section>
+        {session && <TournamentCTA />}
         <SimpleGrid
           cols={3}
           spacing="lg"
