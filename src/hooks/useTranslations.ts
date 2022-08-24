@@ -1,12 +1,11 @@
-import { useRouter } from "next/router";
-
 import en from "../locales/en";
 import es from "../locales/es";
+import useToggleLanguage from "./useToggleLanguage";
 
 const useTranslations = () => {
-  const { locale } = useRouter();
+  const { currentLocale } = useToggleLanguage();
 
-  return locale === "es" ? es : en;
+  return currentLocale === "es" ? es : en;
 };
 
 export default useTranslations;
