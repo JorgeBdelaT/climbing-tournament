@@ -11,7 +11,7 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   IconLogout,
@@ -19,24 +19,14 @@ import {
   IconBrandFacebook,
   IconHome,
   IconTournament,
+  IconLanguage,
 } from "@tabler/icons";
 import { useRouter } from "next/router";
 
 import ToggleThemeBtn from "@/components/ToggleThemeBtn/ToggleThemeBtn";
 import useThemeModeValue from "@/hooks/useThemeModeValue";
-
-const links = [
-  {
-    link: "/",
-    label: "Home",
-    icon: <IconHome size={18} />,
-  },
-  {
-    link: "/tournaments",
-    label: "Tournaments",
-    icon: <IconTournament size={18} />,
-  },
-];
+import useTranslations from "@/hooks/useTranslations";
+import useToggleLanguage from "@/hooks/useToggleLanguage";
 
 const useStyles = createStyles((theme) => ({
   burger: {
@@ -101,6 +91,24 @@ const MobileMenu = () => {
   const { classes, cx } = useStyles();
   const { route } = useRouter();
   const { toggleColorScheme } = useMantineColorScheme();
+  const t = useTranslations();
+  const { toggleLanguage } = useToggleLanguage();
+
+  const links = useMemo(
+    () => [
+      {
+        link: "/",
+        label: t.home,
+        icon: <IconHome size={18} />,
+      },
+      {
+        link: "/tournaments",
+        label: t.tournaments,
+        icon: <IconTournament size={18} />,
+      },
+    ],
+    [t]
+  );
 
   return (
     <>
@@ -113,7 +121,7 @@ const MobileMenu = () => {
       />
 
       <Drawer
-        title="Menu"
+        title={t.menu}
         opened={showMenu}
         onClose={() => setShowMenu(false)}
         padding="xl"
@@ -129,7 +137,7 @@ const MobileMenu = () => {
       >
         <Stack className={classes.section} spacing={0}>
           <Title className={classes.sectionTitle} order={5}>
-            Navigation
+            {t.navigation}
           </Title>
           {links.map(({ label, link, icon }) => (
             <Group
@@ -156,27 +164,33 @@ const MobileMenu = () => {
 
         <Stack className={classes.section} spacing={0}>
           <Title className={classes.sectionTitle} order={5}>
-            Settings
+            {t.settings}
           </Title>
           <Group
             className={classes.sectionItem}
             onClick={() => toggleColorScheme()}
           >
-            <ToggleThemeBtn /> Toogle theme
+            <ToggleThemeBtn /> {t.toggleTheme}
+          </Group>
+          <Group className={classes.sectionItem} onClick={toggleLanguage}>
+            <ThemeIcon variant="light" radius="xl" color="violet">
+              <IconLanguage size={18} />
+            </ThemeIcon>
+            {t.toggleLanguage}
           </Group>
           <Divider my="sm" />
         </Stack>
 
         <Stack className={classes.section} spacing={0}>
           <Title className={classes.sectionTitle} order={5}>
-            Account
+            {t.account}
           </Title>
           {session?.user ? (
             <Group className={classes.sectionItem} onClick={() => signOut()}>
               <ThemeIcon variant="light" radius="xl" color="violet">
                 <IconLogout size={18} />
               </ThemeIcon>
-              Logout
+              {t.signOut}
             </Group>
           ) : (
             <>
@@ -187,7 +201,7 @@ const MobileMenu = () => {
                 <ThemeIcon variant="light" radius="xl" color="violet">
                   <IconBrandGoogle size={18} />
                 </ThemeIcon>
-                Sign in with Google
+                {t.signInwithGoogle}
               </Group>
 
               <Group
@@ -197,7 +211,7 @@ const MobileMenu = () => {
                 <ThemeIcon variant="light" radius="xl" color="violet">
                   <IconBrandFacebook stroke={1.5} size={18} />
                 </ThemeIcon>
-                Sign in with Facebook
+                {t.signInwithFacebook}
               </Group>
             </>
           )}
