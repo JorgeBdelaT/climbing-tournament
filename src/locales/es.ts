@@ -16,6 +16,7 @@ const t = {
   tournaments: "Torneos",
   settings: "Configuración",
   toggleTheme: "Cambiar tema",
+  toggleLanguage: "Cambiar idioma a ingles",
   account: "Cuenta",
   signInwithGoogle: "Ingresar con Google",
   signInwithFacebook: "Ingresar con Facebook",

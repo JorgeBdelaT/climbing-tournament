@@ -16,6 +16,7 @@ const t = {
   tournaments: "Tournaments",
   settings: "Settings",
   toggleTheme: "Toggle theme",
+  toggleLanguage: "Change language to spanish",
   account: "Account",
   signInwithGoogle: "Sign in with Google",
   signInwithFacebook: "Sign in with Facebook",
