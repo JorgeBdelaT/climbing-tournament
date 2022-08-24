@@ -1,22 +1,15 @@
 import { Box, Center, SegmentedControl } from "@mantine/core";
-import { useRouter } from "next/router";
 
-type LocaleOptions = "es" | "en";
+import useToggleLanguage from "../../hooks/useToggleLanguage";
 
 // TODO: Use cookie or localstorage
 const ToggleLanguageBtn = () => {
-  const router = useRouter();
-  const { route, locale, locales } = router;
-  console.log({ locales });
-
-  const handleLanguageChange = (v: LocaleOptions) => {
-    router.push(route, route, { locale: v });
-  };
+  const { currentLocale, toggleLanguage } = useToggleLanguage();
 
   return (
     <SegmentedControl
-      onChange={handleLanguageChange}
-      value={locale}
+      onChange={toggleLanguage}
+      value={currentLocale}
       styles={(theme) => ({
         root: {
           background: theme.other.modeValue(

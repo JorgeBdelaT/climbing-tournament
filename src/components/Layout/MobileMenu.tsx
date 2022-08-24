@@ -20,12 +20,14 @@ import {
   IconBrandFacebook,
   IconHome,
   IconTournament,
+  IconLanguage,
 } from "@tabler/icons";
 import { useRouter } from "next/router";
 
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
 import useThemeModeValue from "../../hooks/useThemeModeValue";
 import useTranslations from "../../hooks/useTranslations";
+import useToggleLanguage from "../../hooks/useToggleLanguage";
 
 const useStyles = createStyles((theme) => ({
   burger: {
@@ -91,6 +93,7 @@ const MobileMenu = () => {
   const { route } = useRouter();
   const { toggleColorScheme } = useMantineColorScheme();
   const t = useTranslations();
+  const { toggleLanguage } = useToggleLanguage();
 
   const links = useMemo(
     () => [
@@ -169,6 +172,12 @@ const MobileMenu = () => {
             onClick={() => toggleColorScheme()}
           >
             <ToggleThemeBtn /> {t.toggleTheme}
+          </Group>
+          <Group className={classes.sectionItem} onClick={toggleLanguage}>
+            <ThemeIcon variant="light" radius="xl" color="violet">
+              <IconLanguage size={18} />
+            </ThemeIcon>
+            {t.toggleLanguage}
           </Group>
           <Divider my="sm" />
         </Stack>
