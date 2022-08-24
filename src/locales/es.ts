@@ -20,6 +20,11 @@ const t = {
   account: "Cuenta",
   signInwithGoogle: "Ingresar con Google",
   signInwithFacebook: "Ingresar con Facebook",
+
+  // Toggle Theme
+  press: "Presiona",
+  or: "o",
+  toToggleTheme: "para cambiar el tema",
 };
 
 export default t;
