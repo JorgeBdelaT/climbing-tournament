@@ -20,6 +20,8 @@ import {
 
 import ToggleThemeBtn from "../ToggleThemeBtn/ToggleThemeBtn";
 import MobileMenu from "./MobileMenu";
+import ToggleLanguageBtn from "../ToggleLanguageBtn/ToggleLanguageBtn";
+import useTranslations from "../../hooks/useTranslations";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -55,6 +57,7 @@ const useStyles = createStyles((theme) => ({
 const Header = () => {
   const { data: session } = useSession();
   const { classes } = useStyles();
+  const t = useTranslations();
 
   return (
     <Container className={classes.header} fluid>
@@ -72,13 +75,14 @@ const Header = () => {
         </Link>
         <Group className={classes.actionsContainer} spacing={24}>
           <ToggleThemeBtn />
+          <ToggleLanguageBtn />
           {session ? (
             <Button
               leftIcon={<IconLogout size={18} />}
               onClick={() => signOut()}
               className={classes.button}
             >
-              Sign out
+              {t.signOut}
             </Button>
           ) : (
             <Menu
@@ -91,7 +95,7 @@ const Header = () => {
                   rightIcon={<IconChevronDown size={18} stroke={1.5} />}
                   className={classes.button}
                 >
-                  Sign in
+                  {t.signIn}
                 </Button>
               </Menu.Target>
               <Menu.Dropdown>
@@ -103,7 +107,7 @@ const Header = () => {
                     </ThemeIcon>
                   }
                 >
-                  with Google
+                  {t.withGoogle}
                 </Menu.Item>
                 <Menu.Item
                   onClick={() => signIn("facebook")}
@@ -113,7 +117,7 @@ const Header = () => {
                     </ThemeIcon>
                   }
                 >
-                  with Facebook
+                  {t.withFacebook}
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
