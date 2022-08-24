@@ -1,18 +1,21 @@
+import useTranslations from "@/hooks/useTranslations";
 import { Button } from "@mantine/core";
 import { IconPlus } from "@tabler/icons";
 import Link from "next/link";
 
 const TournamentCTA = () => {
+  const t = useTranslations();
+
   return (
     <Link href="/tournaments/new" passHref>
       <Button
         mb="xl"
         sx={{ width: "100%" }}
-        variant="light"
+        size="lg"
         component="a"
-        leftIcon={<IconPlus size={18} />}
+        leftIcon={<IconPlus size={24} />}
       >
-        Create a tournament
+        {t.createATournament}
       </Button>
     </Link>
   );
