@@ -52,6 +52,37 @@ const baseTheme: MantineThemeOverride = {
         },
       }),
     },
+    Stepper: {
+      styles: (theme) => ({
+        stepIcon: {
+          color: themeModeValue(theme, theme.colors.gray[7], theme.white),
+          backgroundColor: themeModeValue(
+            theme,
+            theme.colors.gray[2],
+            theme.colors.deepBlue[1]
+          ),
+          borderColor: themeModeValue(
+            theme,
+            theme.colors.gray[2],
+            theme.colors.deepBlue[1]
+          ),
+          '&[data-progress="true"]': {
+            borderColor: theme.primaryColor[7],
+          },
+        },
+      }),
+    },
+    Input: {
+      styles: (theme) => ({
+        input: {
+          backgroundColor: themeModeValue(
+            theme,
+            theme.colors.gray[2],
+            theme.colors.deepBlue[1]
+          ),
+        },
+      }),
+    },
   },
   other: {
     modeValue: themeModeValue,
