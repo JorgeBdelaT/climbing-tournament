@@ -35,6 +35,15 @@ const t = {
   // Create Tournament
   createTournamentDescription:
     "A continuación podrás crear un torneo de escalada para la modalidad de boulder. El formulario consta de 8 etapas, pero descuida, no tienes que completar toda la información inmediatamente. Además, todos tus cambios son guardados automaticamente, por lo que si cierras esta pestaña y luego vuelves a tratar de crear un torneo, veras los datos anteriormente ingresados. Cada una de las etapas cuenta con su propia descripción.",
+  createTournamentStep1Label: "Información general",
+  createTournamentStep2Label: "Agregar categorias",
+  createTournamentStep3Label: "Agregar rondas",
+  createTournamentStep4Label: "Agregar boulders",
+  createTournamentStep5Label: "Agregar participantes",
+  createTournamentStep6Label: "Agregar abridores",
+  createTournamentStep7Label: "Configurar managers",
+  createTournamentStep8Label: "Gestionar jueces",
+  save: "Guardar",
 };
 
 export default t;
