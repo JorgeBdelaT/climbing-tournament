@@ -5,6 +5,7 @@ import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
 import { GetServerSidePropsContext } from "next";
 import { getCookie } from "cookies-next";
+import "dayjs/locale/es";
 
 import type { AppRouter } from "@/server/router";
 import ThemeProvider from "@/providers/ThemeProvider";
