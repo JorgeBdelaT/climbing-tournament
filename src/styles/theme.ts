@@ -77,7 +77,18 @@ const baseTheme: MantineThemeOverride = {
         input: {
           backgroundColor: themeModeValue(
             theme,
-            theme.colors.gray[2],
+            theme.colors.gray[0],
+            theme.colors.deepBlue[1]
+          ),
+        },
+      }),
+    },
+    DatePicker: {
+      styles: (theme) => ({
+        dropdown: {
+          backgroundColor: themeModeValue(
+            theme,
+            theme.colors.gray[0],
             theme.colors.deepBlue[1]
           ),
         },
